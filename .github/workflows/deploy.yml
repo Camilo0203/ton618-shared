@@ -23,7 +23,7 @@ jobs:
             set -e
             
             echo "=== Deploying ton618-shared ==="
-            cd /home/ton618/ton618-shared
+            cd /opt/ton618/ton618-shared
             
             echo "Pulling latest changes..."
             git pull origin main
@@ -32,7 +32,7 @@ jobs:
             npm ci
             
             echo "Restarting ton618-bot (depends on shared)..."
-            cd /home/ton618/ton618-bot
+            cd /opt/ton618/ton618-bot
             pm2 restart ton618-bot
             
             echo "=== Deploy completed successfully ==="
