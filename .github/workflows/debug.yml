@@ -1,0 +1,46 @@
+name: Debug VPS Connection
+
+on:
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug VPS environment
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "=== User and Directory ==="
+            whoami
+            pwd
+            id
+            
+            echo "=== Home directory contents ==="
+            ls -la /home/ton618/
+            
+            echo "=== Check if repos exist ==="
+            test -d /home/ton618/ton618-shared && echo "ton618-shared exists" || echo "ton618-shared missing"
+            test -d /home/ton618/ton618-status && echo "ton618-status exists" || echo "ton618-status missing"
+            
+            echo "=== Check installed commands ==="
+            which git
+            which npm
+            which node
+            which pm2
+            
+            echo "=== Versions ==="
+            git --version
+            node --version
+            npm --version
+            pm2 --version
+            
+            echo "=== PM2 status ==="
+            pm2 list
