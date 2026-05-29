@@ -15,9 +15,21 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
+          command_timeout: 30m
           script: |
+            set -e
+            
+            echo "=== Deploying ton618-shared ==="
             cd /home/ton618/ton618-shared
+            
+            echo "Pulling latest changes..."
             git pull origin main
+            
+            echo "Installing dependencies..."
             npm ci
+            
+            echo "Restarting ton618-bot (depends on shared)..."
             cd /home/ton618/ton618-bot
             pm2 restart ton618-bot
+            
+            echo "=== Deploy completed successfully ==="
