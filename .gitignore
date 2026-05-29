@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+build/
+*.tgz
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Lock files
+*.lock
+
+# Tokens/cache
+.youtube-tokens.json
+
+# IDE/Editor
+.vscode/
+.idea/
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
