@@ -9,8 +9,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "declaration": false,
-    "declarationMap": false,
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "./dist/types",
     "sourceMap": true,
     "lib": ["ES2022", "DOM"],
     "types": ["node"]
