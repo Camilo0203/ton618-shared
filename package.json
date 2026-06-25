@@ -1,7 +1,7 @@
 {
   "name": "@ton618/shared",
   "version": "1.0.0",
-  "description": "Código compartido entre los servicios de TON618 — bot, web dashboard y música",
+  "description": "Código compartido entre los servicios de TON618: bot, web, status y dashboard",
   "type": "module",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
